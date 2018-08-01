@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ResturantList from './components/ResturantList.jsx'
+import OrderHistory from './components/OrderHistory.js'
+import { Switch, Route, NavLink } from 'react-router-dom';
+
+
 
 class App extends Component {
   render() {
+    const Nav = (props) => <nav>
+<ul>
+  <li>
+    <NavLink to="/">Resturants</NavLink>
+  </li>
+  <li>
+    <NavLink to="/orders">Orders</NavLink>
+  </li>
+</ul>
+</nav>
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        {Nav()}
+        <Switch>
+          <Route exact path="/" component={ResturantList}/>
+          <Route exact path="/orders" component={OrderHistory}/>
+        </Switch>
       </div>
     );
   }
 }
 
 export default App;
+
