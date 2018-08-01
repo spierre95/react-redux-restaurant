@@ -18,18 +18,32 @@ const orderReducer = (state = initialState,action)=>{
         }
     return newState
     case "ADD":
-
-    console.log(state)
-
-        for (let key in state){
-            if(action.payload.id == key ){
+    for (let key in state){
+        if(action.payload.id === key ){
+            if(state[key].create_order.length == 0){
                 state[key].create_order.push(action.payload.item)
             }
+             for(let el of state[key].create_order){
+                if(el.name !== action.payload.item.name){
+                    state[key].create_order.push(action.payload.item)
+                } else {
+                    el.quantity += 1
+                }
+            }
         }
+    }
+    console.log(state)
     return state
     case 'REMOVE':
     const firstIndex = state.indexOf(action.payload)
-    return state.filter((item,index) => index !== firstIndex)
+    for (let key in state){
+        if(action.payload.id === key ){
+            if(state[key].create_order.length == 0){
+               state.filter((item,index) => index !== firstIndex)
+            }
+        }
+    }
+
     case 'CHECKOUT':
     return action.payload
     default:
