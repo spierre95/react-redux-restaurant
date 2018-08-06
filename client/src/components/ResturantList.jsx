@@ -33,7 +33,6 @@ render(){
 let resturantList = this.state.resturants.map((resturant,index) =>
 <Grid.Column>
       <Resturant resturant={resturant.name} desc={resturant.description} id={resturant.id}/>
-      <Menu menu={resturant.menu} id={resturant.id}/>
 </Grid.Column>
 )
 return(
@@ -45,7 +44,6 @@ return(
   <Grid.Row>
   {resturantList}
   </Grid.Row>
-  <OrderSummary/>
 </Grid>
 </div>
 )

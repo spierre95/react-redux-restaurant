@@ -4,8 +4,9 @@
     "port": 27017,
     "database": "resturants",
     "password": "",
-    "name": "mongoDS",
+    "name": "db",
     "user": "",
-    "connector": "mongodb"
+    "connector": "mongodb",
+    "useNewUrlParser": true
   }
 }

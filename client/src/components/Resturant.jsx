@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 
 const Resturant = (props) => {
   return(
   <div>
-    <h3>{props.resturant}</h3>
-    <h4>{props.desc}</h4>
+    <Link to={`/restaurant/${props.id}`}><h3>{props.resturant}</h3></Link>
   </div>
   )
 }

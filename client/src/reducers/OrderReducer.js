@@ -1,48 +1,56 @@
 const initialState = {
-    res_id:{
-        create_order:[],
-        order_received:{
-            order_id:[]
-        }
-    }
+    res_id:[{}]
 }
 
 
 const orderReducer = (state = initialState,action)=>{
   switch(action.type){
+
     case "INITIALIZE_RESTURANTS":
-        console.log(state)
+
         let newState = {}
         for (let resturant of action.payload){
-            newState[resturant.id] = {create_order:[],order_received:{}}
+            newState[resturant.id] = resturant.menu
         }
+
     return newState
+
     case "ADD":
+
+    var resId = action.payload.id
+
     for (let key in state){
-        if(action.payload.id === key ){
-            if(state[key].create_order.length == 0){
-                state[key].create_order.push(action.payload.item)
-            }
-             for(let el of state[key].create_order){
-                if(el.name !== action.payload.item.name){
-                    state[key].create_order.push(action.payload.item)
-                } else {
-                    el.quantity += 1
+        if(resId === key ){
+           var increaseQuantity = state[key].map((item)=>{
+                 if(item.name == action.payload.item.name){
+                    item.quantity += 1
                 }
-            }
+                return item
+            })
         }
     }
-    console.log(state)
-    return state
+
+    let addItem = {[resId]:increaseQuantity}
+
+    return Object.assign({},state,addItem)
+
     case 'REMOVE':
-    const firstIndex = state.indexOf(action.payload)
+
+    resId = action.payload.id
     for (let key in state){
-        if(action.payload.id === key ){
-            if(state[key].create_order.length == 0){
-               state.filter((item,index) => index !== firstIndex)
-            }
+        if(resId === key ){
+            var decreaseQuantity = state[key].map((item)=>{
+                 if(item.name == action.payload.item.name && item.quantity > 0){
+                    item.quantity -= 1
+                }
+                return item
+            })
         }
     }
+
+    let removeItem = {[resId]:decreaseQuantity}
+
+    return Object.assign({},state,removeItem)
 
     case 'CHECKOUT':
     return action.payload

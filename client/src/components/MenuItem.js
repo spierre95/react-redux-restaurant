@@ -4,29 +4,14 @@ import {connect} from 'react-redux';
 
 const MenuItem = (props) => {
 
-  for(let key in props.cart){
-
-    console.log(key)
-
-    var itemsInCart = props.cart[key].create_order.filter((item) =>item.name === props.menuItem.name ).length
-    console.log(itemsInCart)
-  }
-
-  const priceTotal = () => {
-    if(itemsInCart === 0){
-      return 0
-    }
-    return props.menuItem.price * itemsInCart
-  }
-
   return(
     <div>
     <Card>
       <Card.Content>
-        <Card.Header>{props.menuItem.name} x {itemsInCart}</Card.Header>
+        <Card.Header>{props.menuItem.name} x {props.menuItem.quantity}</Card.Header>
         <Card.Meta>Price: &#36;{props.menuItem.price}</Card.Meta>
         <Card.Description>
-          Total: &#36;{priceTotal()}
+         Total: &#36;{props.menuItem.price * props.menuItem.quantity}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
@@ -45,6 +30,7 @@ const MenuItem = (props) => {
 }
 
 function mapStateToProps(state){
+  console.log(state.order)
   return {
     cart:state.order
   }

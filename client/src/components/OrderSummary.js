@@ -5,21 +5,18 @@ import Order from './Order.js'
 
 const OrderSummary = (props) => {
 
+
   for (let key in props.cart){
 
-    let create_order = props.cart[key].create_order
+    let create_order = props.cart[key]
 
-    var orderArr = create_order.filter((item, pos, self)=> {
-    return self.indexOf(item) == pos;
-  })
-
-    var OrderSummary = orderArr.map((item,index)=>
-    <Order cart={props.cart} item={item}/>)
+    var OrderSummary = create_order.map((item,index)=>
+    <Order cart={props.cart[key]} item={item}/>)
 
     var total = () => {
      let total = 0
      create_order.forEach((item)=>{
-        total += item.price
+        total += item.price * item.quantity
      })
      return total
     }

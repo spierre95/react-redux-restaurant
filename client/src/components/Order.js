@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Table } from 'semantic-ui-react';
 
 const Order = (props) => {
+
+
 const numberOfItems = props.cart.filter((item) =>item.name === props.item.name ).length
 
   const PriceTotal = () => {

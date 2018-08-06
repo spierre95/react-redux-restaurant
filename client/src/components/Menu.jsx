@@ -4,8 +4,20 @@ import MenuItem from './MenuItem.js';
 
 const Menu = (props) => {
 
-    let menuItems = props.menu.map((menuItem,index)=>
-    <MenuItem addToCart={props.addToCart} removeFromCart={props.removeFromCart} menuItem={menuItem}  id={props.id}/>)
+
+for(let key in props.cart){
+
+  let res_id = props.match.params.res_id
+
+  if(key == res_id){
+    let currentMenu = props.cart[res_id]
+
+    let menuItems = currentMenu.map((menuItem,index)=>
+    <MenuItem addToCart={props.addToCart}
+    removeFromCart={props.removeFromCart}
+    menuItem={menuItem}
+    id={res_id}/>)
+
     return(
     <div>
     {menuItems}
@@ -13,8 +25,10 @@ const Menu = (props) => {
   )
 }
 
+}
+}
+
 function mapStateToProps(state){
-  console.log(state)
   return {
     cart:state.order
   }
