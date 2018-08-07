@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import MenuItem from './MenuItem.js';
+import Navbar from './Header.jsx'
 
 const Menu = (props) => {
 
@@ -18,13 +19,29 @@ for(let key in props.cart){
     menuItem={menuItem}
     id={res_id}/>)
 
+    let totalPrice = () => {
+     let total = 0
+     currentMenu.forEach((item)=>{
+        total += item.price * item.quantity
+     })
+     return total
+    }
+
+    let totalQuantity = () =>{
+       let total = 0
+     currentMenu.forEach((item)=>{
+        total += item.quantity
+     })
+     return total
+    }
+
     return(
     <div>
-    {menuItems}
+    <Navbar totalQuantity={totalQuantity()} totalPrice={totalPrice()}/>
+      {menuItems}
     </div>
   )
 }
-
 }
 }
 

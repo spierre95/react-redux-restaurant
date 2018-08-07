@@ -9,9 +9,10 @@ const MenuItem = (props) => {
     <Card>
       <Card.Content>
         <Card.Header>{props.menuItem.name} x {props.menuItem.quantity}</Card.Header>
+        <img src={props.menuItem.image_url}/>
         <Card.Meta>Price: &#36;{props.menuItem.price}</Card.Meta>
         <Card.Description>
-         Total: &#36;{props.menuItem.price * props.menuItem.quantity}
+         Total: &#36;{props.menuItem.quantity * props.menuItem.price}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
