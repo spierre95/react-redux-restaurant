@@ -3,19 +3,18 @@ import { Table } from 'semantic-ui-react';
 
 const OrdersPlaced = (props) => {
 
-console.log(props)
-const numberOfItems = props.totalOrder.filter((item) =>item.name === props.order.name ).length
 
-  const PriceTotal = () => {
-    if(numberOfItems === 0){
-      return props.order.price
+  let totalPrice = () => {
+     let total = 0
+     props.totalOrder.forEach((item)=>{
+        total += item.price * item.quantity
+     })
+     return total
     }
-    return props.order.price * numberOfItems
-  }
 
   return(
     <div>
-    <h1>Order Number {props.orderNum}</h1>
+    <h1>Order Number</h1>
     <Table celled padded>
     <Table.Header>
       <Table.Row>
@@ -34,7 +33,7 @@ const numberOfItems = props.totalOrder.filter((item) =>item.name === props.order
             &#36;{props.order.price}
           </Table.Cell>
           <Table.Cell singleLine>
-            {numberOfItems}
+            {props.order.quantity}
           </Table.Cell>
           <Table.Cell>
             &#36;{PriceTotal()}

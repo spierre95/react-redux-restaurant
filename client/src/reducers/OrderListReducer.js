@@ -1,6 +1,10 @@
-const orderListReducer = (state={},action)=>{
+const initialState = {
+    res_id:[{}]
+}
+const orderListReducer = (state=initialState,action)=>{
   switch(action.type){
     case "PLACE_ORDER":
+    debugger
     const ids = Object.keys(state)
     let id = 1
     if(id != 1){

@@ -4,37 +4,26 @@ import {connect} from 'react-redux';
 
 
 const OrderHistory = () =>{
-  return(<h1>Hello</h1>)
+
+let totalOrder = props.orderList[props.res_id]
+
+let orders = totalOrder.map((order)=>
+<OrdersPlaced order={order} totalOrder={totalOrder}/>
+)
+
+return (
+    <div>
+      {orders}
+    </div>
+  )
+
 }
 
-// const orderList = () => {
-//   for(let key in props.orderList){
-//    let orders = props.orderList[key].map((order)=>{
-//     <OrdersPlaced orderNum={key} order={order} totalOrder={props.orderList.key}/>
-//   }
-//   return (
-//     <div>
-//       {orders}
-//     </div>
-//   )
-// }
-// }
-
-// return(
-//  <div>
-//     <h2>Order Summary</h2>
-//     <div>
-//       {orderList()}
-//     </div>
-// </div>
-// )
-// }
-
-// function mapStateToProps(state){
-//   console.log(state)
-//   return {
-//     orderList:state.orderList
-//   }
-// }
+function mapStateToProps(state){
+  console.log(state)
+  return {
+    orderList:state.orderList
+  }
+}
 
 export default(OrderHistory)

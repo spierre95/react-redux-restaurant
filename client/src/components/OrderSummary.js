@@ -5,22 +5,21 @@ import Order from './Order.js'
 
 const OrderSummary = (props) => {
 
+    const res_id = props.match.params.res_id
 
-  for (let key in props.cart){
+    let myOrder = props.cart[res_id].filter((item) =>item.quantity !== 0 )
 
-    let create_order = props.cart[key]
+    var OrderSummary = myOrder.map((item,index)=>
+    <Order cart={props.cart[res_id]} item={item}/>)
 
-    var OrderSummary = create_order.map((item,index)=>
-    <Order cart={props.cart[key]} item={item}/>)
-
-    var total = () => {
+    let totalPrice = () => {
      let total = 0
-     create_order.forEach((item)=>{
+     myOrder.forEach((item)=>{
         total += item.price * item.quantity
      })
      return total
     }
-  }
+
 
   return(
   <div>
@@ -39,10 +38,13 @@ const OrderSummary = (props) => {
         {OrderSummary}
      </Table.Body>
   </Table>
-  <Button animated='fade' onClick= {() => props.placeOrder(props.cart)} >
+  <Button animated='fade' onClick= {() => props.placeOrder(myOrder)} >
       <Button.Content visible>Checkout</Button.Content>
-      <Button.Content hidden>Total: &#36;{total()}</Button.Content>
+      <Button.Content hidden>Total: &#36;{totalPrice()}</Button.Content>
   </Button>
+  </div>
+  <div>
+    <OrderHistory res_id={res_id}/>
   </div>
 
   )
@@ -57,7 +59,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     placeOrder:(item) =>{
-      dispatch({type:"PLACE_ORDER", payload:item})
+      dispatch({type:"PLACE_ORDER", payload:{item:item,id:id})
     }
   }
 }

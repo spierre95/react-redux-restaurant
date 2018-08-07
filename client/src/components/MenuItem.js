@@ -5,11 +5,11 @@ import {connect} from 'react-redux';
 const MenuItem = (props) => {
 
   return(
-    <div>
-    <Card>
+    <div class="menuContainer">
+    <Card class="menuItem">
       <Card.Content>
         <Card.Header>{props.menuItem.name} x {props.menuItem.quantity}</Card.Header>
-        <img src={props.menuItem.image_url}/>
+        <img class="food" src={props.menuItem.image_url}/>
         <Card.Meta>Price: &#36;{props.menuItem.price}</Card.Meta>
         <Card.Description>
          Total: &#36;{props.menuItem.quantity * props.menuItem.price}

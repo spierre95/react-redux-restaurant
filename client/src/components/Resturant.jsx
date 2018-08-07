@@ -4,7 +4,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 const Resturant = (props) => {
   return(
   <div>
-    <Link to={`/restaurant/${props.id}`}><h3>{props.resturant}</h3></Link>
+    <Link to={`/menu/${props.id}`}><h3>{props.resturant}</h3></Link>
   </div>
   )
 }

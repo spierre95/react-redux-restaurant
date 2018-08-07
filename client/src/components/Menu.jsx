@@ -37,7 +37,7 @@ for(let key in props.cart){
 
     return(
     <div>
-    <Navbar totalQuantity={totalQuantity()} totalPrice={totalPrice()}/>
+    <Navbar totalQuantity={totalQuantity()} totalPrice={totalPrice()} res_id={res_id}/>
       {menuItems}
     </div>
   )

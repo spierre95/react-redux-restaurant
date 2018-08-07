@@ -23,3 +23,19 @@ nav li a:hover {
   display:inline-block;
   padding:0 10px 0 10px;
 }
+
+.food{
+  width:200px;
+  height:200px;
+}
+
+.menuContainer{
+  display:inline-flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.menuContainer .menuItem{
+  align-items: center;
+  align-content: center;
+}

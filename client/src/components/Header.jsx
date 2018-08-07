@@ -8,12 +8,12 @@ const Navbar = (props) =>{
 return(<nav>
 <ul>
   <li>
-    <NavLink to="/">
+    <NavLink to={"/"}>
        Resturants
     </NavLink>
   </li>
   <li>
-      <NavLink to="/orders">
+      <NavLink to={`/menu/${props.res_id}/order`}>
         Orders
         <div className = "ordersum totalprice">
         {props.totalPrice}
