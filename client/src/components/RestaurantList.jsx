@@ -38,7 +38,7 @@ let restaurantList = this.state.restaurants.map((restaurant,index) =>
 return(
 <div>
  <Header as='h2' textAlign='center'>
-      <Header.Content>Resturants</Header.Content>
+      <Header.Content>Restaurants</Header.Content>
 </Header>
 <Grid columns={3} padded>
   <Grid.Row>

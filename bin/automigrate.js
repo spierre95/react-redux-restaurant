@@ -101,7 +101,7 @@ ds.automigrate("restaurants", function(err) {
   }
   ];
   var count = restaurants.length;
-  restaurants.forEach(function(account) {
+  restaurants.forEach(function(restaurants) {
     app.models.restaurants.create(restaurants, function(err, model) {
       if (err) throw err;
 
