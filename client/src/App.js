@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ResturantList from './components/ResturantList.jsx'
+import ResturantList from './components/RestaurantList.jsx'
 import Menu from './components/Menu.jsx'
 import OrderHistory from './components/OrderHistory.js'
 import { Switch, Route, NavLink } from 'react-router-dom';

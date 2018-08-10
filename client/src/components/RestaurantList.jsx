@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header,Grid } from 'semantic-ui-react'
 import axios from 'axios';
-import Resturant from './Resturant.jsx'
+import Resturant from './Restaurant.jsx'
 import Menu from './Menu.jsx'
 import {connect,dispatch} from "react-redux"
 import OrderSummary from './OrderSummary.js'
@@ -11,7 +11,7 @@ class ResturantList extends Component{
   constructor(props){
     super(props)
     this.state = {
-      resturants:[]
+      restaurants:[]
     }
   }
 
@@ -19,20 +19,20 @@ class ResturantList extends Component{
 
   let { dispatch } = this.props
 
-    axios.get(`http://localhost:3000/api/resturants`)
+    axios.get(`http://localhost:3000/api/restaurants`)
       .then(res => {
         console.log(res)
-        const resturants = res.data;
-        dispatch({type:"INITIALIZE_RESTURANTS", payload:resturants})
-        this.setState({ resturants })
+        const restaurants = res.data;
+        dispatch({type:"INITIALIZE_RESTURANTS", payload:restaurants})
+        this.setState({ restaurants })
     })
 }
 
 render(){
 
-let resturantList = this.state.resturants.map((resturant,index) =>
+let restaurantList = this.state.restaurants.map((restaurant,index) =>
 <Grid.Column>
-      <Resturant resturant={resturant.name} desc={resturant.description} id={resturant.id}/>
+      <Resturant restaurant={restaurant.name} desc={restaurant.description} id={restaurant.id}/>
 </Grid.Column>
 )
 return(
@@ -42,7 +42,7 @@ return(
 </Header>
 <Grid columns={3} padded>
   <Grid.Row>
-  {resturantList}
+  {restaurantList}
   </Grid.Row>
 </Grid>
 </div>
@@ -52,6 +52,6 @@ return(
 
 
 export default connect(
-  state => ({ resturants: state.resturants })
+  state => ({ restaurants: state.restaurants })
 )(ResturantList)
 

@@ -1,6 +1,6 @@
 {
-  "name": "resturants",
-  "plural": "resturants",
+  "name": "restaurants",
+  "plural": "restaurants",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

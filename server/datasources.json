@@ -2,7 +2,7 @@
   "db": {
     "host": "localhost",
     "port": 27017,
-    "database": "resturants",
+    "database": "restaurants",
     "password": "",
     "name": "db",
     "user": "",

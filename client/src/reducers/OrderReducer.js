@@ -9,8 +9,8 @@ const orderReducer = (state = initialState,action)=>{
     case "INITIALIZE_RESTURANTS":
 
         let newState = {}
-        for (let resturant of action.payload){
-            newState[resturant.id] = resturant.menu
+        for (let restaurant of action.payload){
+            newState[restaurant.id] = restaurant.menu
         }
 
     return newState

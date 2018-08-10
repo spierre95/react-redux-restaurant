@@ -1,5 +1,5 @@
 {
-  "name": "resturant-app",
+  "name": "restaurant-app",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
@@ -34,5 +34,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "resturant-app"
+  "description": "restaurant-app"
 }
