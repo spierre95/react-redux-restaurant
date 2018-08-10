@@ -36,7 +36,7 @@ const OrdersPlaced = (props) => {
             {props.order.quantity}
           </Table.Cell>
           <Table.Cell>
-            &#36;{PriceTotal()}
+            &#36;{totalPrice()}
           </Table.Cell>
         </Table.Row>
      </Table.Body>

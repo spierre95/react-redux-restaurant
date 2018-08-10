@@ -2,6 +2,7 @@ import React from 'react';
 import { Table,Header,Button } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import Order from './Order.js'
+import OrderHistory from './OrderHistory.js'
 
 const OrderSummary = (props) => {
 
@@ -38,28 +39,28 @@ const OrderSummary = (props) => {
         {OrderSummary}
      </Table.Body>
   </Table>
-  <Button animated='fade' onClick= {() => props.placeOrder(myOrder)} >
+  <Button animated='fade' onClick= {() => props.placeOrder(myOrder,res_id)} >
       <Button.Content visible>Checkout</Button.Content>
       <Button.Content hidden>Total: &#36;{totalPrice()}</Button.Content>
   </Button>
+  <OrderHistory res_id={res_id} orderList={props.orderList}/>
   </div>
-  <div>
-    <OrderHistory res_id={res_id}/>
-  </div>
-
   )
 }
 
 function mapStateToProps(state){
   return {
-    cart:state.order
+    cart:state.order,
+    orderList:state.orderList
   }
 }
 
+
+
 function mapDispatchToProps(dispatch){
   return {
-    placeOrder:(item) =>{
-      dispatch({type:"PLACE_ORDER", payload:{item:item,id:id})
+    placeOrder:(item,id) =>{
+      dispatch({type:"PLACE_ORDER", payload:{item:item,id:id}})
     }
   }
 }

@@ -14,3 +14,7 @@ export function removeFromCart(id){
     id
   };
 }
+
+export function initializeRestaurants(){
+
+}
